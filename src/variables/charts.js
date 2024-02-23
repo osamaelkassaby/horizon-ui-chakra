@@ -108,15 +108,15 @@ export const barChartOptionsDailyTraffic = {
 export const barChartDataConsumption = [
   {
     name: "PRODUCT A",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    data: [400, 370, 330, 390, 320, 350, 360],
   },
   {
     name: "PRODUCT B",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    data: [400, 370, 330, 390, 320, 350, 360],
   },
   {
     name: "PRODUCT C",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    data: [400, 370, 330, 390, 320, 350, 360],
   },
 ];
 
@@ -141,7 +141,7 @@ export const barChartOptionsConsumption = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["17", "18", "19", "20", "21", "22", "23", "24", "25"],
+    categories: ["17", "18", "19", "20", "21", "22", "23"],
     show: false,
     labels: {
       show: true,

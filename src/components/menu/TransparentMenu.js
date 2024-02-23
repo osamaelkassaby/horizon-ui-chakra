@@ -77,7 +77,7 @@ export default function Banner(props) {
             </Text>
           </Flex>
         </MenuItem>
-        <MenuItem
+        <MenuItem 
           transition='0.2s linear'
           p='0px'
           borderRadius='8px'
@@ -91,7 +91,7 @@ export default function Banner(props) {
           }}
           mb='10px'>
           <Flex align='center'>
-            <Icon as={MdOutlineCardTravel} h='16px' w='16px' me='8px' />
+            <Icon as={MdOutlineCardTravel} h='16px' w='16px' me='8px'  />
             <Text fontSize='sm' fontWeight='400'>
               Panel 2
             </Text>

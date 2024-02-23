@@ -69,7 +69,8 @@ export default function ColumnsTable(props) {
         </Text>
         <Menu />
       </Flex>
-      <Table {...getTableProps()} variant='simple' color='gray.500' mb='24px'>
+
+      <Table {...getTableProps()} variant='simple' color='gray.500' mb='24px' >
         <Thead>
           {headerGroups.map((headerGroup, index) => (
             <Tr {...headerGroup.getHeaderGroupProps()} key={index}>
@@ -98,13 +99,22 @@ export default function ColumnsTable(props) {
               <Tr {...row.getRowProps()} key={index}>
                 {row.cells.map((cell, index) => {
                   let data = "";
-                  if (cell.column.Header === "NAME") {
+                  if (cell.column.Header === "ID") {
                     data = (
                       <Text color={textColor} fontSize='sm' fontWeight='700'>
                         {cell.value}
                       </Text>
                     );
-                  } else if (cell.column.Header === "STATUS") {
+                  } 
+                  if (cell.column.Header === "NAME") {
+                    data = (
+                      <Text color={textColor} fontSize='sm' fontWeight='700' >
+                        {cell.value}
+                      </Text>
+                    );
+                  }
+                  
+                  else if (cell.column.Header === "STATUS") {
                     data = (
                       <Flex align='center'>
                         <Icon
@@ -112,30 +122,31 @@ export default function ColumnsTable(props) {
                           h='24px'
                           me='5px'
                           color={
-                            cell.value === "Approved"
+                            cell.value === "Attendance"
                               ? "green.500"
-                              : cell.value === "Disable"
+                              : cell.value === "Absent"
                               ? "red.500"
                               : cell.value === "Error"
                               ? "orange.500"
                               : null
                           }
                           as={
-                            cell.value === "Approved"
+                            cell.value === "Attendance"
                               ? MdCheckCircle
-                              : cell.value === "Disable"
+                              : cell.value === "Absent"
                               ? MdCancel
                               : cell.value === "Error"
                               ? MdOutlineError
                               : null
                           }
                         />
-                        <Text color={textColor} fontSize='sm' fontWeight='700'>
+                        <Text color={textColor} fontSize='sm' fontWeight='700' >
                           {cell.value}
                         </Text>
                       </Flex>
                     );
-                  } else if (cell.column.Header === "DATE") {
+                  } 
+                  else if (cell.column.Header === "DATE") {
                     data = (
                       <Text color={textColor} fontSize='sm' fontWeight='700'>
                         {cell.value}
