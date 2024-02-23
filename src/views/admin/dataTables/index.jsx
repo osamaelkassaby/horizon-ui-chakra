@@ -3,7 +3,6 @@ import ComplexTable from "views/admin/dataTables/components/ComplexTable";
 import { columnsDataComplex } from "views/admin/dataTables/variables/columnsData";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 export default function Settings() {
   const [apiData, setApiData] = useState([]);
 
@@ -25,7 +24,6 @@ export default function Settings() {
 
     fetchData();
   }, []);
-
   // Check if apiData is an array before rendering the table
   if (!Array.isArray(apiData)) {
     // Handle the case when apiData is not an array

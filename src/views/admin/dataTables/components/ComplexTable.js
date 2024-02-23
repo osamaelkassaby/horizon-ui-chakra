@@ -103,6 +103,7 @@ export default function ColumnsTable(props) {
                     data = (
                       <Text color={textColor} fontSize='sm' fontWeight='700'>
                         {cell.value}
+
                       </Text>
                     );
                   } 
@@ -116,7 +117,8 @@ export default function ColumnsTable(props) {
                   
                   else if (cell.column.Header === "STATUS") {
                     data = (
-                      <Flex align='center'>
+                      <Flex align='center'
+                      >
                         <Icon
                           w='24px'
                           h='24px'
@@ -139,6 +141,7 @@ export default function ColumnsTable(props) {
                               ? MdOutlineError
                               : null
                           }
+
                         />
                         <Text color={textColor} fontSize='sm' fontWeight='700' >
                           {cell.value}
