@@ -27,7 +27,6 @@ import Menu from "components/menu/GroupsMenu";
 import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
 export default function ColumnsTable(props) {
   const { columnsData, tableData } = props;
-
   const columns = useMemo(() => columnsData, [columnsData]);
   const data = useMemo(() => tableData, [tableData]);
 
@@ -54,6 +53,9 @@ export default function ColumnsTable(props) {
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
   const [groupId , setGroupId] = useState('');
+  const [CourseName , setCourseName]  = useState('');
+
+  props.GroupId(groupId);
   return (
     <Card
       direction='column'
@@ -66,11 +68,11 @@ export default function ColumnsTable(props) {
           fontSize='22px'
           fontWeight='700'
           lineHeight='100%'>
-          Complex Table {groupId}
+          {CourseName}
         </Text>
-        <Menu  GroupeId={
-          groupId => setGroupId(groupId)
-        } courseID = {props.courseID}/>
+        <Menu  GroupeId={groupId => setGroupId(groupId)}
+               CourseName ={CourseName => setCourseName(CourseName)}
+              courseID = {props.courseID}/>
       </Flex>
 
       <Table {...getTableProps()} variant='simple' color='gray.500' mb='24px' >

@@ -93,9 +93,9 @@ export default function Banner(props) {
         <Icon as={MdOutlineMoreHoriz} color={iconColor} w='24px' h='24px' />
       </MenuButton>
       <MenuList
-        w='150px'
+        w='250px'
         minW='unset'
-        maxW='150px !important'
+        maxW='300px !important'
         border='transparent'
         backdropFilter='blur(63px)'
         bg={bgList}

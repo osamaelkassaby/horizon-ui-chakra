@@ -59,15 +59,15 @@ export const columnsDataComplex = [
 
   {
     Header: "ID",
-    accessor: "id",
+    accessor: "ID",
   },
   {
     Header: "NAME",
-    accessor : "name"
+    accessor : "NameEn"
   },
   {
     Header: "STATUS",
-    accessor: "status",
+    accessor: "IsAbsent",
   }
   
 ];

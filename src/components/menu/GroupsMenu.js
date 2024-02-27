@@ -109,9 +109,11 @@ export default function Banner(props) {
       {
         apiData.map(item => (
           <MenuItem
-          onClick={
-            ()=> props.GroupeId(item.ID)
-          }
+          onClick={() => {
+            props.GroupeId(item.ID);
+            props.CourseName(item.CourseName);
+        }}
+        
             transition='0.2s linear'
             color={textColor}
             _hover={textHover}
