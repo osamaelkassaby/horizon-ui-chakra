@@ -11,7 +11,7 @@ import {
   Tr,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   useGlobalFilter,
   usePagination,
@@ -21,7 +21,7 @@ import {
 
 // Custom components
 import Card from "components/card/Card";
-import Menu from "components/menu/MainMenu";
+import Menu from "components/menu/GroupsMenu";
 
 // Assets
 import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
@@ -53,6 +53,7 @@ export default function ColumnsTable(props) {
 
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
+  const [groupId , setGroupId] = useState('');
   return (
     <Card
       direction='column'
@@ -65,9 +66,11 @@ export default function ColumnsTable(props) {
           fontSize='22px'
           fontWeight='700'
           lineHeight='100%'>
-          Complex Table
+          Complex Table {groupId}
         </Text>
-        <Menu />
+        <Menu  GroupeId={
+          groupId => setGroupId(groupId)
+        } courseID = {props.courseID}/>
       </Flex>
 
       <Table {...getTableProps()} variant='simple' color='gray.500' mb='24px' >

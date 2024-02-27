@@ -3,16 +3,20 @@ import ComplexTable from "views/admin/dataTables/components/ComplexTable";
 import { columnsDataComplex } from "views/admin/dataTables/variables/columnsData";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Menu from 'components/menu/CoursesMenu'
 export default function Settings() {
   const [apiData, setApiData] = useState([]);
+  const [courseId , setCourseId] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = "32938"; // Replace with your actual authentication token
-        const response = await axios.get("https://localhost:7149/api/Absence", {
+        const token = "7EDD40DB-543B-462D-9013-4FE0C85DC9A4"; // Replace with your actual authentication token
+        const response = await axios.post("https://localhost:7149/api/Absence", {
+          'ID' :3}
+          ,{
           headers: {
-            Auth: `Bearer ${token}`,
+            Auth: `${token}`,
           },
         });
         setApiData(response.data.data);
@@ -35,10 +39,15 @@ export default function Settings() {
   }
 
   return (
+    
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
-      <ComplexTable
+    <Menu  Course={
+         courseId => setCourseId(courseId)
+        } courseID={courseId}/>  
+        <ComplexTable
         columnsData={columnsDataComplex}
         tableData={apiData}
+        courseID = {courseId}
       />
     </Box>
   );

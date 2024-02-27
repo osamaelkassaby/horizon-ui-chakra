@@ -20,10 +20,11 @@ import {
   MdOutlineLightbulb,
   MdOutlineSettings,
 } from "react-icons/md";
-
+import axios from "axios";
+import { useState , useEffect } from "react";
 export default function Banner(props) {
   const { ...rest } = props;
-
+  
   const textColor = useColorModeValue("secondaryGray.500", "white");
   const textHover = useColorModeValue(
     { color: "secondaryGray.900", bg: "unset" },
@@ -53,6 +54,27 @@ export default function Banner(props) {
   } = useDisclosure();
 
  
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = "7EDD40DB-543B-462D-9013-4FE0C85DC9A4"; // Replace with your actual authentication token
+        const response = await axios.get("https://localhost:7149/api/User/Courses", {
+          headers: {
+            Auth: `${token}`,
+          },
+        });
+        setApiData(response.data.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Menu isOpen={isOpen1} onClose={onClose1}>
       <MenuButton
@@ -80,29 +102,34 @@ export default function Banner(props) {
         boxShadow={bgShadow}
         borderRadius='20px'
         p='15px'>
-        <MenuItem
-        onClick={
-          ()=> props.CourseId(2222)
-        }
-          transition='0.2s linear'
-          color={textColor}
-          _hover={textHover}
-          p='0px'
-          borderRadius='8px'
-          _active={{
-            bg: "transparent",
-          }}
-          _focus={{
-            bg: "transparent",
-          }}
-          mb='10px'>
-          <Flex align='center' >
-            <Icon as={MdOutlinePerson} h='16px' w='16px' me='8px' />
-            <Text fontSize='sm' fontWeight='400'  >
-              Panel 1222
-            </Text>
-          </Flex>
-        </MenuItem>
+      
+      {
+        apiData.map(item => (
+          <MenuItem
+          onClick={
+            ()=> props.Course(item.ID)
+          }
+            transition='0.2s linear'
+            color={textColor}
+            _hover={textHover}
+            p='0px'
+            borderRadius='8px'
+            _active={{
+              bg: "transparent",
+            }}
+            _focus={{
+              bg: "transparent",
+            }}
+            mb='10px'>
+            <Flex align='center' >
+              <Icon as={MdOutlinePerson} h='16px' w='16px' me='8px' />
+              <Text fontSize='sm' fontWeight='400'  >
+                {item.CourseName}
+              </Text>
+            </Flex>
+          </MenuItem>
+        ))
+      }
      
       </MenuList>
     </Menu>
